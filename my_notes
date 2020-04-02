@@ -1,0 +1,10 @@
+# App starts with an index page greeting user and asking them to "Log In" or "Create an account".
+# Should "create an account" be a link or a button? How do I make 2 buttons work in a single post?
+# "Create an account" should render a signup page.
+# That signup page should post to a create user action.
+# That action should create a user, log them in, and render their new /user/home page.
+
+# "Log In" takes the user to their /user/home page.
+# They can "See My List" with a button click or "Add Pins" with a button click. How do I make 2 buttons work?
+# "See My List" should render a page with an itemized list of pins.
+# "Add Pins" should render an edit.erb page.

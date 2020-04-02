@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <body>  
+    <h1>Create Account</h1>
+    <form action="/users/new" method="POST">
+
+      <p><label for="name" id="name">Name:</label>
+      <input type="text" name="user[name]"></p><br>      
+
+      <p><label for="email" id="email">Emai:</label>
+      <input type="text" name="user[email]"></p><br>  
+      
+      <p><label for="password" id="password">Password:</label>
+      <input type="text" name="user[password]"></p><br>
+
+      <input type="submit" value="Create Account">
+
+    </form>
+   </body>
+</html>
