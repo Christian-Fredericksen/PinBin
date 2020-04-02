@@ -12,21 +12,20 @@ class UsersController < ApplicationController
         @user.save
         session[:user_id] = @user.id
 
-        redirect '/users/home'          
+        redirect '/users/show'   
     end
 
-    get '/users/home' do
+    
+
+    get '/users/show' do 
         @user = User.find(session[:user_id])
-        erb :'/users/home'
-    end
-
-    get '/users/my_collection' do 
-        @user = User.find(params[:id])
         erb :'/users/show'
     end
+
+    
     
     get '/users/:id' do 
         @user = User.find(params[:id])
-        erb :'/users/home'
+        erb :'/users/show'
     end
 end

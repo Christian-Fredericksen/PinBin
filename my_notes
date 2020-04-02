@@ -8,3 +8,9 @@
 # They can "See My List" with a button click or "Add Pins" with a button click. How do I make 2 buttons work?
 # "See My List" should render a page with an itemized list of pins.
 # "Add Pins" should render an edit.erb page.
+
+
+get '/users/my_collection' do 
+        @user = User.find(params[:id])
+        erb :'/users/show'
+    end
