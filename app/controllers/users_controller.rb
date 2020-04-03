@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     #READ
     get '/users' do 
         @users = User.all
-        erb :'/index' 
+        erb :'/users/index' 
     end
 
     get '/users/:id' do 
