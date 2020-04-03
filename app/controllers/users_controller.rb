@@ -20,9 +20,9 @@ class UsersController < ApplicationController
     end
 
     #READ
-    get '/users' do 
-        @users = User.all
-        erb :'/users/index' 
+    get '/users' do         
+        @users = User.all        
+        erb :'/users/index'
     end
 
     get '/users/:id' do 
@@ -34,6 +34,21 @@ class UsersController < ApplicationController
     get '/users/:id/edit' do
         @user = User.find(session[:user_id])
         erb :'/users/edit'
+    end
+
+    patch '/users/:id' do #edit action
+        @user = User.find(session[:user_id])
+        @user.name = params[:name]
+        @user.email = params[:email]
+        @user.save
+        redirect to "/users/#{@user.id}"
+      end
+
+    #DELETE
+    delete '/users/:id' do #delete action
+    @users = User.find_by_id(params[:id])
+    @users.delete
+    redirect to '/users'
     end
     
 
