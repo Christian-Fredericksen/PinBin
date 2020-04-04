@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     #READ
     get '/users' do         
-        @users = User.all        
+        @users = User.all      
         erb :'/users/index'
     end
 
@@ -29,6 +29,11 @@ class UsersController < ApplicationController
         @user = User.find(session[:user_id])
         erb :'/users/show'
     end 
+
+    get '/users/:id/show' do 
+        @user = User.find(params[:id])
+        erb :'/users/show' 
+    end
     
     #UPDATE
     get '/users/:id/edit' do
@@ -46,9 +51,9 @@ class UsersController < ApplicationController
 
     #DELETE
     delete '/users/:id' do #delete action
-    @users = User.find_by_id(params[:id])
-    @users.delete
-    redirect to '/users'
+        @users = User.find_by_id(params[:id])
+        @users.delete
+        redirect to '/users'
     end
     
 
