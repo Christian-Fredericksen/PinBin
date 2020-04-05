@@ -29,11 +29,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         erb :'/users/show'
     end 
-
-    # get '/users/:id/show' do 
-    #     @user = User.find(params[:id])
-    #     erb :'/users/show' 
-    # end
+    
     
     #UPDATE
     get '/users/:id/edit' do

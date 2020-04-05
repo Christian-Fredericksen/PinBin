@@ -11,6 +11,14 @@ class ApplicationController < Sinatra::Base
     erb:"/pinbin"
   end
 
+  helpers do 
+
+    def logged_in?
+      !!session[:email]
+    end
+
+  end
+
   
 
 
