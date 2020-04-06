@@ -1,7 +1,7 @@
 class PinsController < ApplicationController
 
-    get '/collection/:id' do
-        #@user = User.find(params[:id])
+    get '/users_collection/:id' do
+        @user = User.find(session[:user_id])
         erb :"/pins/show"
     end 
  

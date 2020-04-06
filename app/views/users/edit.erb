@@ -18,9 +18,9 @@
 </form>
 
 <h2>To remove your account click DELETE.</h2>
-<h3>This action cannot be undone!</h3>
-<a href="/users/<%= @user.id%>">Never mind</a>
 <form action="/users/<%= @user.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="delete">
 </form>
+<h3>This action cannot be undone!</h3>
+<a href="/users/<%= @user.id%>">Never mind</a>
