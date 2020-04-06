@@ -40,7 +40,9 @@ class UsersController < ApplicationController
        end
        
        delete "/users/:id" do
-         @user = User.destroy(session[:user_id])
+         @user = User.find(session[:user_id])
+         session.clear
+         @user = User.destroy(params[:id])
          redirect to "/users"
        end
     end

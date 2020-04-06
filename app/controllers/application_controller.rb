@@ -13,6 +13,20 @@ class ApplicationController < Sinatra::Base
     erb:"/pinbin"
   end
 
+  post '/login' do
+    if (params[:name]).empty? ||(params[:password]).empty?
+      redirect to '/failure'
+    else
+    @user = User.find_by(params[:id])                  
+    session[:user_id] = @user.id
+    redirect "/users/#{@user.id}"
+    end   
+  end
+
+  get '/failure' do        
+    erb :'pinbin'
+  end
+
   helpers do 
 
     def logged_in?
@@ -20,8 +34,8 @@ class ApplicationController < Sinatra::Base
     end
 
   end
+end
 
   
 
 
-end
