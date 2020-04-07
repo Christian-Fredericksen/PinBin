@@ -5,11 +5,17 @@
     </head>
     <body>
         <h1>All Registered Users</h1>
+        <ol type="1">
         <% @users.each do |u|%>
-            <ul>
-            <li>
-            <a href="/other_collections/<%= u.id%>"><%= u.name%><br><%= u.email%></a>        
-            </ul>
-            <% end %>            
+            
+                <li>
+                    <a href="/other_collections/<%= u.id%>">
+                        <%= u.name%><br><%= u.email%>
+                    </a>
+                </li>
+                <br>        
+            
+            <% end %> 
+        </ol>         
     </body>
 </html>
