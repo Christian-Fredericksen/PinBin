@@ -13,14 +13,13 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb:"/pinbin"
   end
-
-  post '/login' do
-    if (params[:name]).empty? ||(params[:password]).empty?
-      redirect to '/failure'
-    else
-    @user = User.find_by(params[:id])                  
+  
+  post '/login' do    
+    if @user = User.find_by(params[:id])                  
     session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
+    else
+      redirect '/failure'
     end   
   end
 
@@ -35,9 +34,14 @@ class ApplicationController < Sinatra::Base
 
   helpers do 
 
-    def logged_in?
-      !!session[:email]
-    end
+    # def current_user 
+    #   @user ||= User.find(session[:user_id])
+    # end
+
+
+    # def logged_in?
+    #   !!session[:user_id]
+    # end
 
   end
 end

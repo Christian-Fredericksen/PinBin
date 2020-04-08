@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     end
 
     get "/users/new" do
+        # if logged_in?
+        #     redirect "/users"
+        # end
         @user = User.new
         erb :'users/new'
     end
@@ -35,7 +38,7 @@ class UsersController < ApplicationController
        
        patch "/users/:id" do
          @user = User.find(session[:user_id])
-         @user.update(session[:user_id])
+         @user.update(name: params[:name], email: params[:email], password: params[:password])
          redirect to "/users/#{ @user.id }"
        end
        
@@ -43,7 +46,7 @@ class UsersController < ApplicationController
          @user = User.find(session[:user_id])
          session.clear
          @user = User.destroy(params[:id])
-         redirect to "/users"
+         redirect to "/logout"
        end
     end
 
