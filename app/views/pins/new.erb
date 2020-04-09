@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <body>  
+
+  
+    <h1>New Pin</h1>
+    <form action="/new_pin" method="POST">
+
+      <p><label for="source" id="source">Source<h5>(ie: Disneyland, Knotts Berry Farm, Comicon): </h5></label>
+      <input type="text" name="source"></p>      
+
+      <p><label for="catagory" id="catagory">Catagory <h5>(ie: Heroes, Villians, Mascot, Other): </h5></label>
+      <input type="text" name="catagory"></p> 
+      
+      <p><label for="catagory_source" id="catagory_source">Catagory Source <h5>(ie: Sleeping Beauty, Peanuts, Michelin Tires, or Leave Blank): </h5></label>
+      <input type="text" name="catagory_source" value= ""> </p>
+
+      <p><label for="pin" id="pin">Pin <h5>(ie: Mickey Mouse, Snoopy, Michelin Tire Man): </h5></label>
+      <input type="text" name="pin"> </p>      
+
+      <input type="submit" value="New Pin">
+
+    </form>
+   </body>
+</html>

@@ -2,17 +2,17 @@
 <form action="/users/<%= @user.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
 
-    <h4>Current Name:<%=@user.name%></h4>
+    
     <p><label for="name" id="name">Name:</label>
-    <input type="text" name="name"></p><br>
+    <input type="text" name="name" value="<%=@user.name%>"></p><br>
 
-    <h4>Current Email:<%=@user.email%></h4>
+    
     <p><label for="email" id="email">Email:</label>
-    <input type="text" name="email"></p><br>
+    <input type="text" name="email" value="<%=@user.email%>"></p><br>
 
-    <h4>Enter New Password:</h4>
+    
     <p><label for="password" id="password">Password:</label>
-    <input type="text" name="password"></p><br>
+    <input type="password" name="password" value="<%=@user.password%>"></p><br>
 
     <input type="submit" value="Update">    
 </form>

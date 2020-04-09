@@ -1,8 +1,6 @@
 require './config/environment'
 
-
-
-class ApplicationController < Sinatra::Base
+class ApplicationController < Sinatra::Base  
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -34,9 +32,9 @@ class ApplicationController < Sinatra::Base
 
   helpers do 
 
-    # def current_user 
-    #   @user ||= User.find(session[:user_id])
-    # end
+    def current_user? 
+      @user = User.find_by(session[:user_id])
+    end
 
 
     # def logged_in?
