@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>All Pins!!</title>
+    </head>
+    <body>
+        <h1>Pins accross the Bin</h1>
+        <ol type="1">
+        <% @pins.each do |p|%>
+            
+                <li>
+                    <a href="/other_pins/<%= p.id%>">
+                        <%= p.source%><br><%= p.catagory%>
+                    </a>
+                </li>
+                <br>        
+            
+            <% end %> 
+        </ol>         
+    </body>
+</html>

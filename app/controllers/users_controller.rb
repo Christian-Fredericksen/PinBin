@@ -8,8 +8,8 @@ class UsersController < ApplicationController
         erb :'/users/index'
     end
 
-    get "/users/new" do
-        unless current_user?            
+    get "/create_account" do
+        unless current_user            
             @user = User.new
             erb :'users/new'
         else
@@ -26,6 +26,10 @@ class UsersController < ApplicationController
           redirect "/users/#{@user.id}"
         end   
     end
+
+    get '/failure' do        
+        redirect '/'
+      end
 
     get '/users/:id' do 
         @user = User.find(params[:id])

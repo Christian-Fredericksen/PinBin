@@ -5,49 +5,37 @@ class PinsController < ApplicationController
     end
 
     post "/new_pin" do
-        if (params[:name]).empty? ||(params[:email]).empty? ||(params[:password]).empty?
-            redirect to '/failure'
+        if (params[:source]).empty? ||(params[:catagory]).empty? ||(params[:pin]).empty?
+            redirect to '/pins/new'
         else
-          @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])                  
-          session[:user_id] = @user.id
-          redirect "/users/#{@user.id}"
+          @pin = Pin.create(:source => params[:source], :catagory => params[:catagory],
+            :catagory_source => params[:catagory_source], :pin => params[:pin])
+            pin= @pin.id        
+            redirect "/my_collection/#{@pin.id}"
         end 
 
     end
 
-    # post "/new_pin" do
-    #     if (params[:source]).empty? ||(params[:catagory]).empty? ||(params[:pin]).empty?
-    #         redirect to '/failure'
-    #     else
-    #       @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])                  
-    #       session[:user_id] = @user.id
-    #       redirect "/users/#{@user.id}"
-    #     end
-
-    # end
-
-
-
-
-
-
-
-
-
-
+    
     #READ
     
     get '/collections' do
+        @pins = Pin.all
         erb :'/pins/index'
     end
 
-    get '/my_collection' do
-        @user = User.find(session[:user_id])
+    get '/my_collection/:id' do
+        @pin = Pin.find_by(session[:id])
         erb :"/pins/show"
     end 
 
-    get '/other_collections/:id' do
+    get '/other_collectors/:id' do
         @user = User.find_by(params[:id])
+        erb :"/pins/show"
+    end
+
+    get '/other_pins/:id' do
+        @pin = Pin.find_by(params[:id])
         erb :"/pins/show"
     end
  

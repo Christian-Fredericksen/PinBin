@@ -21,9 +21,7 @@ class ApplicationController < Sinatra::Base
     end   
   end
 
-  get '/failure' do        
-    erb :'pinbin'
-  end
+  
 
   get '/logout' do
     session.clear
@@ -32,8 +30,8 @@ class ApplicationController < Sinatra::Base
 
   helpers do 
 
-    def current_user? 
-      @user = User.find_by(session[:user_id])
+    def current_user
+      @user = User.find_by_id(session[:user_id])
     end
 
 
