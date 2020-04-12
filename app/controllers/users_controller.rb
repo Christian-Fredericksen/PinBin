@@ -24,7 +24,7 @@ class UsersController < ApplicationController
             @user = User.new
             erb :'users/new'
         else
-            redirect "/users/show"
+            redirect "/users/#{@user.id}"
         end
     end
 
