@@ -19,7 +19,7 @@ class PinsController < ApplicationController
     
     #READ
     
-    get '/collections' do
+    get '/collection' do
         @pins = Pin.all
         erb :'/pins/index'
     end
