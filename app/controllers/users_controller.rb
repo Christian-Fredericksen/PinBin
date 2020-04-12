@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect "/users/#{@user.id}"
         else
-          redirect '/failure'
+          redirect '/'
         end   
       end
 
@@ -36,9 +36,7 @@ class UsersController < ApplicationController
         end   
     end
 
-    get '/failure' do        
-        redirect '/'
-      end
+    
 
     get '/users/:id' do 
         @user = User.find(params[:id])
