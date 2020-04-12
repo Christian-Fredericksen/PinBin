@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/login' do    
-    if @user = User.find_by(params[:id])                  
+    if @user = User.find_by_id(params[:id])                  
     session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
     else
@@ -29,6 +29,8 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do 
+
+    
 
     def current_user
       @user = User.find_by_id(session[:user_id])
