@@ -4,16 +4,16 @@
         <title>All My Pins!!</title>
     </head>
     <body>
-        <h1>Look at those pins, <%=current_user.name%>!</h1>
-        <ol type="1">
-            <% @pins.each do |p|%>
+        <h1>One shiny new pin, <%=current_user.name%>!</h1>
+        <ol type="1">          
             
-                <li>
-                    <%= p.source%><%= p.catagory%>
-                </li>
-                <br>        
-            
-            <% end %> 
+            <li>
+                <%= @pin.source%><br>
+                <%= @pin.catagory%><br>
+                <%= @pin.catagory_source%><br>
+                <%= @pin.pin%>
+            </li><br>               
+             
         </ol>         
     </body>
 </html>

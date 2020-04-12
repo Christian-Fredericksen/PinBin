@@ -11,7 +11,7 @@ class PinsController < ApplicationController
           @pin = Pin.create(:source => params[:source], :catagory => params[:catagory],
             :catagory_source => params[:catagory_source], :pin => params[:pin])
             pin= @pin.id        
-            redirect "/my_collection/#{@pin.id}"
+            redirect "/collection/#{@pin.id}"
         end 
 
     end
@@ -24,8 +24,8 @@ class PinsController < ApplicationController
         erb :'/pins/index'
     end
 
-    get '/my_collection/:id' do
-        @pin = Pin.find_by(session[:id])
+    get '/collection/:id' do
+        @pin = Pin.find(params[:id])
         erb :"/pins/show"
     end 
 
@@ -35,7 +35,7 @@ class PinsController < ApplicationController
     end
 
     get '/other_pins/:id' do
-        @pin = Pin.find_by(params[:id])
+        @pin = Pin.find(params[:id])
         erb :"/pins/show"
     end
  
