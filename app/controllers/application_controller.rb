@@ -12,14 +12,7 @@ class ApplicationController < Sinatra::Base
     erb:"/pinbin"
   end
   
-  post '/login' do    
-    if @user = User.find_by_id(params[:id])                  
-    session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
-    else
-      redirect '/failure'
-    end   
-  end
+  
 
   
 
