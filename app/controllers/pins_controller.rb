@@ -29,14 +29,6 @@ class PinsController < ApplicationController
         erb :"/pins/show"
     end 
 
-    get '/other_collectors/:id' do
-        @user = User.find_by(params[:id])
-        erb :"/pins/show"
-    end
-
-    get '/other_pins/:id' do
-        @pin = Pin.find(params[:id])
-        erb :"/pins/show"
-    end
+   
  
  end
