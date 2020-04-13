@@ -6,15 +6,13 @@
     <body>
         <h1>Pins accross the Bin</h1>
         <ol type="1">
-        <% @pins.each do |p|%>
-            
+        <% @pins.each do |p|%>            
                 <li>
                     <a>
                         <%= p.source%><br><%= p.catagory%>
                     </a>
                 </li>
-                <br>        
-            
+                <br>            
             <% end %> 
         </ol>         
     </body>
