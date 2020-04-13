@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         redirect '/'
     end
 
-    get "/create_account" do
+    get "/new_user" do
         unless current_user            
             @user = User.new
             erb :'users/new'
@@ -48,14 +48,16 @@ class UsersController < ApplicationController
           session[:user_id] = @user.id
           redirect "/users/#{@user.id}"
         end   
-    end
-
-    
+    end    
 
     get '/users/:id' do 
         @user = User.find(params[:id])
         erb :'/users/show'
     end
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------
+
 
     get "/users/:id/edit" do
         @user = User.find(params[:id])
