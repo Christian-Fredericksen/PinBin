@@ -3,10 +3,10 @@
 class UsersController < ApplicationController
      
     #CREATE    
-    get '/users' do         
-        @users = User.all      
-        erb :'/users/index'
-    end
+    # get '/users' do         
+    #     @users = User.all      
+    #     erb :'/users/index'
+    # end
 
     get '/login' do
         if !logged_in?
@@ -25,15 +25,11 @@ class UsersController < ApplicationController
         redirect '/'            
         end
     end
-
-
-        
-
-
-
-
-
     
+    get '/logout' do
+        session.clear
+        redirect '/'
+    end
 
     get "/create_account" do
         unless current_user            

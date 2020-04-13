@@ -10,25 +10,18 @@ class ApplicationController < Sinatra::Base
   
   get "/" do
     erb:"/pinbin"
-  end
-  
-  
-
+  end 
   
 
-  get '/logout' do
-    session.clear
-    redirect '/'
-  end
+  
 
-  helpers do 
+  
 
-    
+  helpers do     
 
     def current_user
       @user = User.find_by_id(session[:user_id])
     end
-
 
     def logged_in?
       !!session[:user_id]
