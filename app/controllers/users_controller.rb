@@ -7,6 +7,25 @@ class UsersController < ApplicationController
     #     @users = User.all      
     #     erb :'/users/index'
     # end
+    get "/new_user" do
+        if !logged_in?
+            erb :'users/new'
+        else
+            @user = current_user
+            session[:user_id] = @user.id
+            redirect "/users/#{@user.id}"
+        end
+    end
+
+    post "/new_user" do        
+        if (params[:name]).empty? ||(params[:email]).empty? ||(params[:password]).empty?
+            redirect to '/failure'
+        else
+          @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])                  
+          session[:user_id] = @user.id
+          redirect "/users/#{@user.id}"
+        end   
+    end
 
     get '/login' do
         if !logged_in?
@@ -31,24 +50,7 @@ class UsersController < ApplicationController
         redirect '/'
     end
 
-    get "/new_user" do
-        unless current_user            
-            @user = User.new
-            erb :'users/new'
-        else
-            redirect "/users/#{@user.id}"
-        end
-    end
-
-    post "/new_user" do        
-        if (params[:name]).empty? ||(params[:email]).empty? ||(params[:password]).empty?
-            redirect to '/failure'
-        else
-          @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])                  
-          session[:user_id] = @user.id
-          redirect "/users/#{@user.id}"
-        end   
-    end    
+        
 
     get '/users/:id' do 
         @user = User.find(params[:id])
