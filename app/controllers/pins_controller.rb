@@ -12,7 +12,7 @@ class PinsController < ApplicationController
           @pin = Pin.create(:source => params[:source], :catagory => params[:catagory],
             :catagory_source => params[:catagory_source], :pin => params[:pin])
             pin= @pin.id        
-            redirect "/collection/#{@pin.id}"
+            redirect "/pins/#{@pin.id}"
         end 
 
     end
