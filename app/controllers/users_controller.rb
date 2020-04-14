@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     post "/new_user" do        
         if (params[:name]).empty? ||(params[:email]).empty? ||(params[:password]).empty?
-            redirect to '/failure'
+            redirect to '/new_user'
         else
           @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])                  
           session[:user_id] = @user.id
@@ -31,7 +31,9 @@ class UsersController < ApplicationController
         if !logged_in?
             erb :'/users/login'
         else
-            redirect '/'
+            @user = current_user
+            session[:user_id] = @user.id
+            redirect "/users/#{@user.id}"
         end
     end
 
