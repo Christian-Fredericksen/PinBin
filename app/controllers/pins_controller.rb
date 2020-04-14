@@ -1,5 +1,6 @@
 class PinsController < ApplicationController
     #CREATE
+
     get "/new_pin" do
         erb :'/pins/new'        
     end
@@ -19,16 +20,36 @@ class PinsController < ApplicationController
     
     #READ
     
-    get '/collection' do
+    get '/pins' do
         @pins = Pin.all
         erb :'/pins/index'
     end
 
-    get '/collection/:id' do
-        @pin = Pin.find(params[:id])
+    get '/pins/:id' do
+        @pins = Pin.find_by_id(params[:id])
         erb :"/pins/show"
     end 
 
+
+    #UPDATE
+    get "/pins/:id/edit" do
+        @pins = Pin.find_by_id(params[:id])
+        erb :'/pins/edit'
+       end 
+       
+       patch "/pins/:id" do
+         @pins = Pin.find_by_id(params[:id])
+         @pins.update(name: params[:name], email: params[:email], password: params[:password])
+         redirect to "/pins/#{@pins.id}"
+       end
+
+       #DELETE   
+       delete "/pins/:id" do
+         @pins = Pin.find(params[:id])
+         @pins = Pin.destroy
+         redirect to "/logout"
+       end
+    end
    
  
  end

@@ -3,10 +3,7 @@
 class UsersController < ApplicationController
      
     #CREATE    
-    # get '/users' do         
-    #     @users = User.all      
-    #     erb :'/users/index'
-    # end
+    
     get "/new_user" do
         if !logged_in?
             erb :'users/new'
@@ -26,6 +23,41 @@ class UsersController < ApplicationController
           redirect "/users/#{@user.id}"
         end   
     end
+
+    #READ
+    get '/users/:id' do 
+        @user = User.find_by_id(params[:id])
+        
+        erb :'/users/show'
+    end
+
+    get '/users' do         
+        @users = User.all      
+        erb :'/users/index'
+    end
+
+    #UPDATE
+    get "/users/:id/edit" do
+        @user = User.find(params[:id])
+        erb :'/users/edit'
+       end 
+       
+       patch "/users/:id" do
+         @user = User.find(params[:id])
+         @user.update(name: params[:name], email: params[:email], password: params[:password])
+         redirect to "/users/#{@user.id}"
+       end
+
+       #DELETE   
+       delete "/users/:id" do
+         @user = User.find(params[:id])
+         @user = User.destroy
+         redirect to "/logout"
+       end
+    end
+
+
+
 
     get '/login' do
         if !logged_in?
@@ -52,35 +84,9 @@ class UsersController < ApplicationController
         redirect '/'
     end
 
-        
-
-    get '/users/:id' do 
-        @user = User.find(params[:id])
-        erb :'/users/show'
-    end
 
 
-#-------------------------------------------------------------------------------------------------------------------------------------
-
-
-    get "/users/:id/edit" do
-        @user = User.find(params[:id])
-        erb :'/users/edit'
-       end 
-       
-       patch "/users/:id" do
-         @user = User.find(params[:id])
-         @user.update(name: params[:name], email: params[:email], password: params[:password])
-         redirect to "/users/#{@user.id}"
-       end
-       
-       delete "/users/:id" do
-         @user = User.find(session[:user_id])
-         session.clear
-         @user = User.destroy(params[:id])
-         redirect to "/logout"
-       end
-    end
+    
 
 
 
