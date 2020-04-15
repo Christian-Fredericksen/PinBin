@@ -1,0 +1,12 @@
+<% @pin.each do |p|%>            
+    <li>
+        <a href="/pins/ <%= p.id%>/edit">
+        <%= p.source%><br>
+        <%= p.catagory%><br>
+        <%= p.catagory_source%><br>
+        <%= p.pin%><br><br>
+        </a>
+    
+    </li>
+               
+<% end %>

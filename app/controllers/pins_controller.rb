@@ -9,10 +9,10 @@ class PinsController < ApplicationController
         if (params[:source]).empty? ||(params[:catagory]).empty? ||(params[:pin]).empty? 
              redirect to '/new_pin'
         else 
-          @pins = Pin.create(:source => params[:source], :catagory => params[:catagory],
+          @pin = Pin.create(:source => params[:source], :catagory => params[:catagory],
             :catagory_source => params[:catagory_source], :pin => params[:pin], :user_id => current_user.id )
                   
-            redirect "/pins/#{@pins.id}"
+            redirect "/pins/#{@pin.id}"
 
         end 
 
@@ -22,38 +22,42 @@ class PinsController < ApplicationController
     #READ
     
     get '/pins' do
-        @pins = Pin.all        
+        if !logged_in?
+            redirect '/'
+        else
+        @pin = Pin.all        
         erb :'/pins/index'
+        end
     end
 
     get '/my_pins' do
         # @pins = Pin.all
-         @pins = current_user.pins
-         erb :'/pins/index'
+         @pin = current_user.pins
+         erb :'/pins/my_pins'
      end
 
     get '/pins/:id' do
-        @pins = Pin.find_by_id(params[:id])
+        @pin = Pin.find_by_id(params[:id])
         erb :"/pins/show"
     end 
 
 
     #UPDATE
     get "/pins/:id/edit" do
-        @pins = Pin.find_by_id(params[:id])
+        @pin = Pin.find_by_id(params[:id])
         erb :'/pins/edit'
        end 
        
        patch "/pins/:id" do
-         @pins = Pin.find_by_id(params[:id])
-         @pins.update(source: params[:source], catagory: params[:catagory], catagory_source: params[:catagory_source], pin: params[:pin])
-         redirect to "/pins/#{@pins.id}"
+         @pin = Pin.find_by_id(params[:id])
+         @pin.update(source: params[:source], catagory: params[:catagory], catagory_source: params[:catagory_source], pin: params[:pin])
+         redirect to "/pins/#{@pin.id}"
        end
 
        #DELETE   
        delete "/pins/:id" do
-         @pins = Pin.find(params[:id])
-         @pins = Pin.destroy(params[:id])
+         @pin = Pin.find(params[:id])
+         @pin = Pin.destroy(params[:id])
          redirect to "/pins"
        end
     

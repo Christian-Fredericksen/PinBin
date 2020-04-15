@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         if !logged_in?
             erb :'users/new'
         else
-            @user = current_user
+            # @user = current_user
             session[:user_id] = @user.id
             redirect "/users/#{@user.id}"
         end
@@ -26,19 +26,38 @@ class UsersController < ApplicationController
 
     #READ
     get '/users/:id' do 
+        if !logged_in?
+            redirect '/login'
+        end 
         @user = User.find_by_id(params[:id])
 
         erb :'/users/show'
     end
 
-    get '/users' do         
-        @users = User.all      
-        erb :'/users/index'
+    
+    get '/users' do    
+        if !logged_in?
+            redirect '/login'  
+        end  
+        @user = User.all    
+        erb :'/users/all_users'
     end
+
+    get '/users/:id/pins' do 
+        if !logged_in?
+            redirect '/login'
+        end 
+        @user = User.find_by(params[:id])
+        binding.pry 
+        erb :'/pins/index'
+    end 
 
     #UPDATE
     get "/users/:id/edit" do
-        @user = User.find(params[:id])
+        if !logged_in?
+            redirect '/login'
+        end 
+        @user = User.find(id: params[:id])
         erb :'/users/edit'
        end 
        
@@ -80,8 +99,12 @@ class UsersController < ApplicationController
     end
     
     get '/logout' do
+        if logged_in?
         session.clear
         redirect '/'
+        else 
+            redirect '/'
+        end 
     end
 end
 
