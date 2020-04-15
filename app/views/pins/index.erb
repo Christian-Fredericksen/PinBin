@@ -5,10 +5,11 @@
     </head>
     <body>
         <h1>Look at all your pins!</h1>
+        <h3>Click on a pin to edit or delete it.</h3>
         <ol type="1">
         <% @pins.each do |p|%>            
                 <li>
-                    <a href="/pins/ <%= p.id%>">
+                    <a href="/pins/ <%= p.id%>/edit">
                     <%= p.source%><br>
                     <%= p.catagory%><br>
                     <%= p.catagory_source%><br>

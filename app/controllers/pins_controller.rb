@@ -22,10 +22,15 @@ class PinsController < ApplicationController
     #READ
     
     get '/pins' do
-       # @pins = Pin.all
-        @pins = current_user.pins
+        @pins = Pin.all        
         erb :'/pins/index'
     end
+
+    get '/my_pins' do
+        # @pins = Pin.all
+         @pins = current_user.pins
+         erb :'/pins/index'
+     end
 
     get '/pins/:id' do
         @pins = Pin.find_by_id(params[:id])
@@ -41,15 +46,15 @@ class PinsController < ApplicationController
        
        patch "/pins/:id" do
          @pins = Pin.find_by_id(params[:id])
-         @pins.update(name: params[:name], email: params[:email], password: params[:password])
+         @pins.update(source: params[:source], catagory: params[:catagory], catagory_source: params[:catagory_source], pin: params[:pin])
          redirect to "/pins/#{@pins.id}"
        end
 
        #DELETE   
        delete "/pins/:id" do
          @pins = Pin.find(params[:id])
-         @pins = Pin.destroy
-         redirect to "/logout"
+         @pins = Pin.destroy(params[:id])
+         redirect to "/pins"
        end
     
 end  
