@@ -4,16 +4,38 @@
         <title>All Pins!!</title>
     </head>
     <body>
-        <h1>Pins accross the Bin</h1>
+        <h1>Look at all your pins!</h1>
         <ol type="1">
         <% @pins.each do |p|%>            
                 <li>
-                    <a>
-                        <%= p.source%><br><%= p.catagory%>
+                    <a href="/pins/ <%= p.id%>">
+                    <%= p.source%><br>
+                    <%= p.catagory%><br>
+                    <%= p.catagory_source%><br>
+                    <%= p.pin%><br><br>
                     </a>
+                
                 </li>
-                <br>            
+                           
             <% end %> 
-        </ol>         
+        </ol>   
+        
+
+
+
+
+
+
+
+
+
+
+        <button onclick="goBack()">Go Back</button> <br>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+     
     </body>
-</html>
+   </html>

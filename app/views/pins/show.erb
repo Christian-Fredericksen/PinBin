@@ -8,10 +8,10 @@
         <ol type="1">          
             
             <li>
-                <%= @pin.source%><br>
-                <%= @pin.catagory%><br>
-                <%= @pin.catagory_source%><br>
-                <%= @pin.description%>
+                <%= @pins.source%><br>
+                <%= @pins.catagory%><br>
+                <%= @pins.catagory_source%><br>
+                <%= @pins.pin%>
             </li><br>               
              
         </ol>         
@@ -20,3 +20,11 @@
 <h2>Add another <a href="/new_pin">pin</a>?</h2>
 <h2>See my <a href="/pins">pins</a>.</h2>
 
+<button onclick="goBack()">Go Back</button> <br>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+    </body>
+</html>

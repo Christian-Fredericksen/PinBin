@@ -13,10 +13,6 @@ class ApplicationController < Sinatra::Base
   end 
   
 
-  
-
-  
-
   helpers do     
 
     def current_user

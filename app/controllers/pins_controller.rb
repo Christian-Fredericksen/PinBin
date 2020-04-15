@@ -6,13 +6,14 @@ class PinsController < ApplicationController
     end
 
     post "/new_pin" do
-        if (params[:source]).empty? ||(params[:catagory]).empty? ||(params[:pin]).empty?
-            redirect to '/new_pin'
-        else
-          @pin = Pin.create(:source => params[:source], :catagory => params[:catagory],
-            :catagory_source => params[:catagory_source], :pin => params[:pin])
-            pin= @pin.id        
-            redirect "/pins/#{@pin.id}"
+        if (params[:source]).empty? ||(params[:catagory]).empty? ||(params[:pin]).empty? 
+             redirect to '/new_pin'
+        else 
+          @pins = Pin.create(:source => params[:source], :catagory => params[:catagory],
+            :catagory_source => params[:catagory_source], :pin => params[:pin], :user_id => current_user.id )
+                  
+            redirect "/pins/#{@pins.id}"
+
         end 
 
     end
@@ -21,7 +22,8 @@ class PinsController < ApplicationController
     #READ
     
     get '/pins' do
-        @pins = Pin.all
+       # @pins = Pin.all
+        @pins = current_user.pins
         erb :'/pins/index'
     end
 
@@ -49,7 +51,6 @@ class PinsController < ApplicationController
          @pins = Pin.destroy
          redirect to "/logout"
        end
-    end
-   
+    
+end  
  
- end
