@@ -1,4 +1,4 @@
-<h2>Edit your account details.</h2>
+<h2>Edit your pin details.</h2>
 <form action="/pins/<%= @pin.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
 
@@ -11,19 +11,19 @@
     <input type="text" name="catagory" value="<%=@pin.catagory%>"></p><br>
 
     
-    <p><label for="catagory_source" id="catagory_source">Password:</label>
+    <p><label for="catagory_source" id="catagory_source">Catagory Source:</label>
     <input type="text" name="catagory_source" value="<%=@pin.catagory_source%>"></p><br>
 
-    <p><label for="pin" id="pin">Password:</label>
+    <p><label for="pin" id="pin">Pin:</label>
     <input type="text" name="pin" value="<%=@pin.pin%>"></p><br>
 
     <input type="submit" value="Update">    
 </form>
 
 <h2>To remove this pin click DELETE.</h2>
-<form action="/pins/<%= @pin.id %>" method="post">
+<form action="/my_pins/<%= @pin.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="delete">
 </form>
 <h3>This action cannot be undone!</h3>
-<a href="/pins">Never mind</a>
+<a href="/my_pins">Never mind</a>
