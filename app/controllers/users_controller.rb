@@ -28,10 +28,10 @@ class UsersController < ApplicationController
     get '/users/:id' do 
         if !logged_in?
             redirect '/login'
-        end 
+        else 
         @user = User.find_by_id(params[:id])
-
         erb :'/users/show'
+        end
     end
 
     
@@ -46,10 +46,10 @@ class UsersController < ApplicationController
     get '/users/:id/pins' do 
         if !logged_in?
             redirect '/login'
-        end 
-        @user = User.find_by(params[:id])
-        binding.pry 
+        else 
+        @user = User.find_by_id(params[:id])        
         erb :'/pins/index'
+        end
     end 
 
     #UPDATE
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
         if !logged_in?
             redirect '/login'
         end 
-        @user = User.find(id: params[:id])
+        @user = User.find(params[:id])
         erb :'/users/edit'
        end 
        
