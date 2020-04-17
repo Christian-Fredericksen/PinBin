@@ -14,7 +14,9 @@
     
   </head>
   <style>
-    body .topnav {
+    body     
+    
+    .topnav {
       background-color: #333;
       overflow: hidden;
     }
@@ -38,16 +40,38 @@
       background-color: #4CAF50;
       color: white;
     }
-  </style>
-  <body>
-    
-    <div class="topnav">
-      <a class="active" href="/">Main</a>
-      <a href='/users/:id'>My Page</a>
-      <a href="/users">Other Collections</a>
-      <a href="/logout">Logout</a>
-    </div>
 
+    .hero-image {
+    
+      background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://66.media.tumblr.com/19df10bbbb328c5735ce22ad1cd6b30d/tumblr_p1c3ih085F1qahbabo1_1280.jpg');
+    
+    
+      height: 50% ;
+    
+    
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+  </style>
+  
+
+
+  <body>  
+    <div class="hero-image">
+      <div class="hero-text">
+        <div class="topnav">
+          <a class="active" href="/">Main</a>
+          <a href='/users/:id'>My Page</a>
+          <a href="/users">Other Collections</a>
+          <a href="/logout">Logout</a>
+        </div>
+      </div>
+   
+   
+    
+    </div>
           
       
 

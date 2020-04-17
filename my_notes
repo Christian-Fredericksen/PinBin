@@ -49,9 +49,10 @@ USERS_SHOW
       
 
     <body>
-    <div class = "center">
-      <h1 class= "box_text" style="background-color: #b4ff69" style="color: #FF69B4"><%="Welcome to your PinBin, "%>
-      <p><%=current_user.name%><%="!"%></p></h1></div>
+        <div class = "center">
+            <h1 class= "box_text" style="background-color: #b4ff69" style="color: #FF69B4"><%="Welcome to your PinBin, "%>
+            <p><%=current_user.name%><%="!"%></p></h1>
+        </div>
 
       <p class= "box_text_2" style="background-color: #b4ff69" >Show me my <a href="/my_pins">pins</a>.</p>
       <p class= "box_text_2" style="background-color: #b4ff69" >Add a <a href="/new_pin">new pin</a>.</p>
