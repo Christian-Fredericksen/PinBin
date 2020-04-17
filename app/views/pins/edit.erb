@@ -21,7 +21,7 @@
 </form>
 
 <h2>To remove this pin click DELETE.</h2>
-<form action="/my_pins/<%= @pin.id %>" method="post">
+<form action="/pins/<%= @pin.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="delete">
 </form>

@@ -58,7 +58,7 @@ class PinsController < ApplicationController
        delete "/pins/:id" do
          @pin = Pin.find(params[:id])
          @pin = Pin.destroy(params[:id])
-         redirect to "/pins"
+         redirect to "/users/:id"
        end
     
 end  
