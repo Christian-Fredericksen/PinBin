@@ -25,16 +25,7 @@ class UsersController < ApplicationController
     end
 
     #READ
-    get '/users/:id' do 
-        if !logged_in?
-            redirect '/login'
-        else 
-        @user = User.find_by_id(params[:id])
-        erb :'/users/show'
-        end
-    end
 
-    
     get '/users' do    
         if !logged_in?
             redirect '/login'  
@@ -43,11 +34,21 @@ class UsersController < ApplicationController
         erb :'/users/all_users'
     end
 
+    get '/users/:id' do 
+        if !logged_in?
+            redirect '/login'
+        else 
+        @user = User.find_by_id(params[:id])
+        erb :'/users/show'
+        end
+    end    
+
     get '/users/:id/pins' do 
         if !logged_in?
             redirect '/login'
         else 
-        @user = User.find_by_id(params[:id])        
+        @user = User.find_by_id(params[:id])
+        
         erb :'/pins/index'
         end
     end 
