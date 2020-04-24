@@ -4,7 +4,7 @@
         <title>All Pins!!</title>
     </head>
     <body>
-        <h1>Look at all those pins!</h1>
+        <h1>Look at <%= @user.name%>'s pins!</h1>
         
         <ol type="1">
         <% @user.pins.each do |p|%>            
